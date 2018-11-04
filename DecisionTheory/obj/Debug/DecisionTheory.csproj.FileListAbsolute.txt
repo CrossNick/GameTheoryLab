@@ -1,0 +1,12 @@
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\bin\Debug\DecisionTheory.exe.config
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\bin\Debug\DecisionTheory.exe
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\bin\Debug\DecisionTheory.pdb
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.csprojResolveAssemblyReference.cache
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.MainForm.resources
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.NPPracticeForm.resources
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.Properties.Resources.resources
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.NPTheoryForm.resources
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.csproj.GenerateResource.Cache
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.csproj.CoreCompileInputs.cache
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.exe
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.pdb

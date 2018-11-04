@@ -16,5 +16,12 @@ namespace DecisionTheory
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var npTheoryFrom = new NPTheoryForm();
+            npTheoryFrom.Show();
+            this.Hide();
+        }
     }
 }
