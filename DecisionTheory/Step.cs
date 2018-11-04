@@ -32,4 +32,19 @@ namespace DecisionTheory
         public float[,] LMatrix { get; set; }
         public float B1 { get; set; }
     }
+
+    public class SStep : Step
+    {
+        public SStep() : base()
+        {
+            QMatrix = new float[3, 2];
+            LMatrix = new float[3, 2];
+            ZMatrix = new float[3, 2];
+            GMatrix = new float[2, 8];
+        }
+        public float[,] QMatrix { get; set; }
+        public float[,] LMatrix { get; set; }
+        public float[,] ZMatrix { get; set; }
+        public float[,] GMatrix { get; set; }
+    }
 }

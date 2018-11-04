@@ -10,3 +10,4 @@ D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionThe
 D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.csproj.CoreCompileInputs.cache
 D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.exe
 D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.pdb
+D:\Универ\GameTheoryLab\GameTheoryLab\DecisionTheory\obj\Debug\DecisionTheory.STheoryForm.resources

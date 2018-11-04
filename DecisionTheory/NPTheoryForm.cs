@@ -107,9 +107,11 @@ namespace DecisionTheory
 
         private void FillDataTable(DataGridView dt, float[,] data)
         {
+            dt.Rows.Clear();
             for (int i = 0; i < data.GetLength(0); i++)
             {
                 dt.Rows.Add();
+                dt.Rows[i].HeaderCell.Value = "a" + i;
                 for (int j = 0; j < data.GetLength(1); j++)
                 {
                     dt.Rows[i].Cells[j].Value = data[i, j];

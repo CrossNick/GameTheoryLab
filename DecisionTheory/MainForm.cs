@@ -23,5 +23,12 @@ namespace DecisionTheory
             npTheoryFrom.Show();
             this.Hide();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            var sTheoryFrom = new STheoryForm();
+            sTheoryFrom.Show();
+            this.Hide();
+        }
     }
 }

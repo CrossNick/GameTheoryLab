@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace DecisionTheory
 {
-    public partial class NPPracticeForm : Form
+    public partial class STheoryForm : Form
     {
         public int nOfSteps;
         public int currentStep;
-        public NPStep[] steps;
+        public SStep[] steps;
 
-        public NPPracticeForm()
+        public STheoryForm()
         {
             InitializeComponent();
         }
@@ -31,16 +31,16 @@ namespace DecisionTheory
 
         private void InitializeNPTheorySteps()
         {
-            steps = new NPStep[nOfSteps];
+            steps = new SStep[nOfSteps];
             //Step 0
-            steps[0] = new NPStep()
+            steps[0] = new SStep()
             {
                 Number = 0,
                 TextToDisplay = "Критерий Неймана-Пирсона применяется в том случае, когда природа находится в одном из двух состояний, одно из которых контролируемо, а другое нет.",
                 ImageFileName = Application.StartupPath+@"\Images\NPStep0.bmp"
             };
             //Step 1
-            steps[1] = new NPStep()
+            steps[1] = new SStep()
             {
                 Number = 1,
                 TextToDisplay = "STEP 2",
@@ -76,9 +76,10 @@ namespace DecisionTheory
             pct1.Image = Image.FromFile(steps[currentStep].ImageFileName);
             FillDataTable(dataGridL, steps[currentStep].LMatrix);
             FillDataTable(dataGridQ, steps[currentStep].QMatrix);
+            FillDataTable(dataGridZ, steps[currentStep].ZMatrix);
+            FillDataTable(dataGridG1, steps[currentStep].GMatrix);
             EnableStepElements();
             PerformStepActions();
-            txtB1.Text = steps[currentStep].B1.ToString();
         }
 
         private void DisableStepElements()
@@ -111,15 +112,12 @@ namespace DecisionTheory
             for (int i = 0; i < data.GetLength(0); i++)
             {
                 dt.Rows.Add();
-                dt.Rows[i].HeaderCell.Value = "a";
+                dt.Rows[i].HeaderCell.Value = "a" + i;
                 for (int j = 0; j < data.GetLength(1); j++)
                 {
                     dt.Rows[i].Cells[j].Value = data[i, j];
                 }
             }
         }
-
-  
-
     }
 }
