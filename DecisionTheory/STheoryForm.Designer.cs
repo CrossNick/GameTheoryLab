@@ -136,6 +136,7 @@
             // 
             // pct1
             // 
+            this.pct1.BackColor = System.Drawing.Color.White;
             this.pct1.Location = new System.Drawing.Point(267, 203);
             this.pct1.Name = "pct1";
             this.pct1.Size = new System.Drawing.Size(592, 335);

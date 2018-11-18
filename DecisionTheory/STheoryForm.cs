@@ -44,7 +44,7 @@ namespace DecisionTheory
             {
                 Number = 1,
                 TextToDisplay = "STEP 2",
-                ImageFileName = Application.StartupPath + @"\Images\NPStep1.jpg"
+                ImageFileName = Application.StartupPath + @"\Images\NPStep1.bmp"
             };
 
         }
@@ -106,7 +106,7 @@ namespace DecisionTheory
             }
         }
 
-        private void FillDataTable(DataGridView dt, float[,] data)
+        private void FillDataTable(DataGridView dt, string[,] data)
         {
             dt.Rows.Clear();
             for (int i = 0; i < data.GetLength(0); i++)

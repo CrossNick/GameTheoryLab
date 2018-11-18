@@ -34,9 +34,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridL = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             this.L1Col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.L2Col = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtB1 = new System.Windows.Forms.TextBox();
             this.pct1 = new System.Windows.Forms.PictureBox();
             this.MainTxt = new System.Windows.Forms.TextBox();
@@ -53,7 +53,7 @@
             this.dataGridQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.B1Col,
             this.B2Col});
-            this.dataGridQ.Location = new System.Drawing.Point(12, 230);
+            this.dataGridQ.Location = new System.Drawing.Point(12, 286);
             this.dataGridQ.Name = "dataGridQ";
             this.dataGridQ.Size = new System.Drawing.Size(249, 150);
             this.dataGridQ.TabIndex = 0;
@@ -73,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 207);
+            this.label1.Location = new System.Drawing.Point(12, 263);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 20);
             this.label1.TabIndex = 1;
@@ -82,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 403);
+            this.label2.Location = new System.Drawing.Point(16, 459);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 3;
@@ -94,19 +94,10 @@
             this.dataGridL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.L1Col,
             this.L2Col});
-            this.dataGridL.Location = new System.Drawing.Point(16, 426);
+            this.dataGridL.Location = new System.Drawing.Point(16, 482);
             this.dataGridL.Name = "dataGridL";
             this.dataGridL.Size = new System.Drawing.Size(245, 150);
             this.dataGridL.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 597);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(194, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Пороговое значение B1:";
             // 
             // L1Col
             // 
@@ -120,9 +111,18 @@
             this.L2Col.Name = "L2Col";
             this.L2Col.ReadOnly = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 224);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(194, 20);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Пороговое значение B1:";
+            // 
             // txtB1
             // 
-            this.txtB1.Location = new System.Drawing.Point(216, 594);
+            this.txtB1.Location = new System.Drawing.Point(216, 221);
             this.txtB1.Name = "txtB1";
             this.txtB1.ReadOnly = true;
             this.txtB1.Size = new System.Drawing.Size(45, 26);
@@ -130,9 +130,10 @@
             // 
             // pct1
             // 
-            this.pct1.Location = new System.Drawing.Point(267, 207);
+            this.pct1.BackColor = System.Drawing.Color.White;
+            this.pct1.Location = new System.Drawing.Point(284, 221);
             this.pct1.Name = "pct1";
-            this.pct1.Size = new System.Drawing.Size(567, 413);
+            this.pct1.Size = new System.Drawing.Size(550, 400);
             this.pct1.TabIndex = 6;
             this.pct1.TabStop = false;
             // 
