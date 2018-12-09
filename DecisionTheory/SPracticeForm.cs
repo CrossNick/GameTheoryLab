@@ -12,57 +12,36 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DecisionTheory
 {
-    public partial class NPPracticeForm : Form
+    public partial class SPracticeForm : Form
     {
+
         private bool IsLMatrixLoaded = false;
         private bool IsQMatrixLoaded = false;
         private int DecisionCount;
+        private int GCount;
         private double[,] QMatrix;
         private List<Point> QPoints;
         private double[,] LMatrix;
         private List<Point> LPoints;
+        private double[,] ZMatrix;
+        private List<Point> ZPoints;
+        private double[,] GMatrix;
+        private List<Point> GPoints;
         private double[,] convexHull;
         private List<Point> convexPoints;
 
-        public NPPracticeForm()
+        public SPracticeForm()
         {
             InitializeComponent();
         }
 
-        private void NPPracticeForm_Load(object sender, EventArgs e)
+        private void SPracticeForm_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void btnSet_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var val = Convert.ToInt32(txtDecisionNumber.Text);
-                if (val < 1)
-                    throw new Exception();
-                DecisionCount = val;
-                dataGridQ.Rows.Clear();
-                dataGridL.Rows.Clear();
-                for (int i = 0; i < DecisionCount; i++)
-                {
-                    dataGridQ.Rows.Add();
-                    dataGridL.Rows.Add();
-                }
-                EnableEditing(dataGridQ);
-                EnableEditing(dataGridL);
-                IsLMatrixLoaded = true;
-                IsQMatrixLoaded = true;
-            }
-            catch
-            {
-                MessageBox.Show("Вы ввели неправильное число!");
-            }
-        }
-
         private void EnableEditing(DataGridView dt)
         {
-            for (int i = 0; i < dt.Rows.Count-1; i++)
+            for (int i = 0; i < dt.Rows.Count - 1; i++)
             {
                 for (int j = 0; j < dt.Rows[i].Cells.Count; j++)
                 {
@@ -77,7 +56,7 @@ namespace DecisionTheory
             if (points.GetLength(1) != 2)
                 throw new Exception();
             var result = new List<Point>();
-            for(int i = 0; i < points.GetLength(0); i++)
+            for (int i = 0; i < points.GetLength(0); i++)
             {
                 result.Add(new Point(points[i, 0], points[i, 1]));
             }
@@ -86,9 +65,9 @@ namespace DecisionTheory
 
         private double[,] PointToArray(List<Point> points)
         {
-            var result = new double[points.Count,2];
+            var result = new double[points.Count, 2];
             int i = 0;
-            foreach(var point in points)
+            foreach (var point in points)
             {
                 result[i, 0] = point.x;
                 result[i, 1] = point.y;
@@ -150,19 +129,6 @@ namespace DecisionTheory
             }
         }
 
-        private double[,] GetGridValues(DataGridView dt)
-        {
-            var result = new double[dt.RowCount-1, dt.ColumnCount];
-            for (int i = 0; i < result.GetLength(0); i++)
-            {
-                for (int j = 0; j < result.GetLength(1); j++)
-                {
-                    result[i, j] = Convert.ToDouble(dt.Rows[i].Cells[j].Value);
-                }
-                
-            }
-            return result;
-        }
         private void btnLoadQ_Click(object sender, EventArgs e)
         {
             try
@@ -179,20 +145,18 @@ namespace DecisionTheory
             }
         }
 
-        private void btnLoadL_Click(object sender, EventArgs e)
+        private double[,] GetGridValues(DataGridView dt)
         {
-            try
+            var result = new double[dt.RowCount - 1, dt.ColumnCount];
+            for (int i = 0; i < result.GetLength(0); i++)
             {
-                var str = GetFileContent();
-                LPoints = StringToPoints(str);
-                LMatrix = PointToArray(LPoints);
-                SetGridValues(dataGridL, LMatrix);
-                IsLMatrixLoaded = true;
+                for (int j = 0; j < result.GetLength(1); j++)
+                {
+                    result[i, j] = Convert.ToDouble(dt.Rows[i].Cells[j].Value);
+                }
+
             }
-            catch
-            {
-                MessageBox.Show("Вы выбрали неверный файл!");
-            }
+            return result;
         }
 
         private void btnConvert_Click(object sender, EventArgs e)
@@ -226,12 +190,82 @@ namespace DecisionTheory
             return result;
         }
 
-        private void btnCompute_Click(object sender, EventArgs e)
+        private void btnLoadL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var str = GetFileContent();
+                LPoints = StringToPoints(str);
+                LMatrix = PointToArray(LPoints);
+                SetGridValues(dataGridL, LMatrix);
+                IsLMatrixLoaded = true;
+            }
+            catch
+            {
+                MessageBox.Show("Вы выбрали неверный файл!");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var str = GetFileContent();
+                ZPoints = StringToPoints(str);
+                ZMatrix = PointToArray(ZPoints);
+                for (int i = 0; i < ZMatrix.GetLength(1); i++)
+                {
+                    double sum = 0;
+                    for (int j = 0; j < ZMatrix.GetLength(0); j++)
+                    {
+                        sum += ZMatrix[j, i];
+                    }
+                    if (sum > 1 || sum <= 0.9)
+                        throw new Exception();
+                }
+                SetGridValues(dataGridZ, ZMatrix);
+            }
+            catch
+            {
+                MessageBox.Show("Вы выбрали неверный файл!");
+            }
+        }
+
+        private void btnSet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var val = Convert.ToInt32(txtDecisionNumber.Text);
+                if (val < 1)
+                    throw new Exception();
+                DecisionCount = val;
+                dataGridQ.Rows.Clear();
+                dataGridL.Rows.Clear();
+                dataGridZ.Rows.Clear();
+                for (int i = 0; i < DecisionCount; i++)
+                {
+                    dataGridQ.Rows.Add();
+                    dataGridL.Rows.Add();
+                    dataGridZ.Rows.Add();
+                }
+                EnableEditing(dataGridQ);
+                EnableEditing(dataGridL);
+                EnableEditing(dataGridZ);
+                IsLMatrixLoaded = true;
+                IsQMatrixLoaded = true;
+            }
+            catch
+            {
+                MessageBox.Show("Вы ввели неправильное число!");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             if (IsLMatrixLoaded)
             {
-                convexPoints = ConvexHull.MakeHull(LPoints).ToList();
-                convexHull = PointToArray(convexPoints);
+                ClauclateGMatrix();
+                RenderGTable();
                 var b = Convert.ToDouble(txtB1.Text);
                 var result = FindSolution(convexPoints.Where(x => x.x <= b).ToList());
                 DrawGraphics();
@@ -250,20 +284,62 @@ namespace DecisionTheory
             }
         }
 
+        private void ClauclateGMatrix()
+        {
+            GCount = (int)Math.Pow(LPoints.Count, ZPoints.Count);
+            GMatrix = new double[GCount, 2];
+            for (int i = 0; i < GMatrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < GMatrix.GetLength(1); j++)
+                {
+                    for (int k = 0; k < ZPoints.Count; k++)
+                    {
+                        GMatrix[i, j] += ZMatrix[k, j] * LMatrix[CalculateG(i, k+1)-1, j];
+                    }
+                }
+            }
+            GPoints = PointFromArray(GMatrix);
+            convexPoints = ConvexHull.MakeHull(GPoints).ToList();
+            convexHull = PointToArray(convexPoints);
+        }
+
+        private int CalculateG(int I, int K)
+        {
+            int A = (int)Math.Pow(LPoints.Count, ZPoints.Count - K);
+            if (A == 0)
+                A++;
+            int B = A * LPoints.Count;
+            I = I - (I / B) * B;
+            int result = I / A + 1;
+            return result;
+        }
+        private void RenderGTable()
+        {
+            dataGridG.ColumnCount = GCount;
+            dataGridG.RowCount = 2;
+            for (int i = 0; i < GMatrix.GetLength(1); i++)
+            {
+                for (int j = 0; j < GMatrix.GetLength(0); j++)
+                {
+                    dataGridG.Rows[i].Cells[j].Value = GMatrix[j, i];
+                }
+            }
+        }
+
         private void ProcessSingleSolution(Point result)
         {
             var adjacent = FindAdjacentPoint(result);
-            if(adjacent.HasValue)
+            if (adjacent.HasValue)
             {
                 var x = (Convert.ToDouble(txtB1.Text) - adjacent.Value.x) / (result.x - adjacent.Value.x);
                 var L = x * result.y - (1 - x) * adjacent.Value.y;
                 var resultString = "(";
-                for (int i = 0; i < LMatrix.GetLength(0); i++)
+                for (int i = 0; i < GMatrix.GetLength(0); i++)
                 {
-                    if (LMatrix[i, 0] == result.x && LMatrix[i, 1] == result.y)
+                    if (GMatrix[i, 0] == result.x && GMatrix[i, 1] == result.y)
                         resultString += x + " ;";
-                    else if (LMatrix[i, 0] == adjacent.Value.x && LMatrix[i, 1] == adjacent.Value.y)
-                        resultString += (1-x) + " ;";
+                    else if (GMatrix[i, 0] == adjacent.Value.x && GMatrix[i, 1] == adjacent.Value.y)
+                        resultString += (1 - x) + " ;";
                     else
                         resultString += "0 ;";
                 }
@@ -273,9 +349,9 @@ namespace DecisionTheory
             else
             {
                 var resultString = "(";
-                for (int i = 0; i < LMatrix.GetLength(0); i++)
+                for (int i = 0; i < GMatrix.GetLength(0); i++)
                 {
-                    if (LMatrix[i, 1] == result.y)
+                    if (GMatrix[i, 1] == result.y)
                         resultString += "1 ;";
                     else
                         resultString += "0 ;";
@@ -283,13 +359,13 @@ namespace DecisionTheory
                 resultString += ")";
                 txtFinal.Text = "Оптимальное решение по критерию Неймана Пирсона по данной задаче X*=" + resultString + ".";
             }
-           
+
         }
 
         private Point? FindAdjacentPoint(Point result)
         {
             int index = 0, adjacentIndex = 0;
-            for(int i = 0; i < convexHull.GetLength(0); i++)
+            for (int i = 0; i < convexHull.GetLength(0); i++)
             {
                 if (convexHull[i, 0] == result.x && convexHull[i, 1] == result.y)
                     index = i;
@@ -309,11 +385,11 @@ namespace DecisionTheory
         private void ProcessMultipleSolution(List<Point> result)
         {
             var lst = new List<int>();
-            for (int i = 0; i < LMatrix.GetLength(0); i++)
+            for (int i = 0; i < GMatrix.GetLength(0); i++)
             {
                 for (int j = 0; j < result.Count; j++)
                 {
-                    if (LMatrix[i, 1] == result[j].y)
+                    if (GMatrix[i, 1] == result[j].y)
                     {
                         lst.Add(i);
                         break;
@@ -352,13 +428,13 @@ namespace DecisionTheory
             MainChart.ChartAreas.Add(MyChartArea);
             mySeries.BorderWidth = 3;
             mySeries.ChartArea = "Math functions";
-            foreach(var item in convexPoints)
+            foreach (var item in convexPoints)
             {
                 mySeries.Points.Add(new DataPoint(item.x, item.y));
                 if (max < item.y) max = item.y;
             }
-            MyChartArea.Axes[0].Interval = max/10;
-            MyChartArea.Axes[1].Interval = max/10;
+            MyChartArea.Axes[0].Interval = max / 10;
+            MyChartArea.Axes[1].Interval = max / 10;
             mySeries.Points.Add(new DataPoint(convexPoints[0].x, convexPoints[0].y));
             MainChart.Series.Add(mySeries);
 
@@ -367,14 +443,14 @@ namespace DecisionTheory
             newSeries.ChartType = SeriesChartType.Line;
             newSeries.BorderWidth = 2;
             newSeries.ChartArea = "Math functions";
-            
-        
+
+
             newSeries.Points.Add(new DataPoint(b, 0));
-            newSeries.Points.Add(new DataPoint(b, max+max*0.2));
+            newSeries.Points.Add(new DataPoint(b, max + max * 0.2));
             MainChart.Series.Add(newSeries);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             var mf = new MainForm();
             mf.Show();

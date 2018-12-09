@@ -168,8 +168,8 @@ namespace DecisionTheory
             steps[14] = new NPStep()
             {
                 Number = 14,
-                TextToDisplay = "Теперь рассмотрим геомтерическую интерпретацию на нашем примере. Построив выпуклую линейную оболочку и пороговое значение, используя описанные шаги, устанавливаем что второе решение являеться оптимальным.",
-                ImageFileName = Application.StartupPath + @"\Images\NPStep13.bmp",
+                TextToDisplay = "Теперь рассмотрим геомтерическую интерпретацию на нашем примере. Построив выпуклую линейную оболочку и пороговое значение, используя описанные шаги, устанавливаем что решением являеться Х=(1/6; 5/6; 0).",
+                ImageFileName = Application.StartupPath + @"\Images\NPStep14.bmp",
                 QMatrix = new string[,] { { "1", "0" }, { "0.9", "0.1" }, { "0.6", "0.4" } },
                 B1 = 0.5f,
                 LMatrix = new string[,] { { "0", "1" }, { "0.1", "0.9" }, { "-", "-" } }
@@ -178,7 +178,7 @@ namespace DecisionTheory
             steps[15] = new NPStep()
             {
                 Number = 15,
-                TextToDisplay = "На этом заканчиваетс ознакомление с критерием Неймана-Пирсона и, если вы чувствуете что усвоили материал достаточно то нажмите на кнопку \"Далее\" что бы самостоятельно решить практический пример.",
+                TextToDisplay = "На этом заканчиваетс ознакомление с критерием Неймана-Пирсона. Для того что бы решить любой пример перейдите в раздел \"Практика\" из главного меню",
                 ImageFileName = Application.StartupPath + @"\Images\NPStep15.bmp",
                 QMatrix = new string[,] { { "1", "0" }, { "0.9", "0.1" }, { "0.6", "0.4" } },
                 B1 = 0.5f,
@@ -254,6 +254,13 @@ namespace DecisionTheory
                     dt.Rows[i].Cells[j].Value = data[i, j];
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var mf = new MainForm();
+            mf.Show();
+            this.Hide();
         }
     }
 }

@@ -30,5 +30,19 @@ namespace DecisionTheory
             sTheoryFrom.Show();
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var npTheoryFrom = new NPPracticeForm();
+            npTheoryFrom.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var sTheoryFrom = new SPracticeForm();
+            sTheoryFrom.Show();
+            this.Hide();
+        }
     }
 }

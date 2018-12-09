@@ -42,6 +42,7 @@
             this.MainTxt = new System.Windows.Forms.TextBox();
             this.PrevBtn = new System.Windows.Forms.Button();
             this.NextBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridQ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pct1)).BeginInit();
@@ -165,11 +166,22 @@
             this.NextBtn.UseVisualStyleBackColor = true;
             this.NextBtn.Click += new System.EventHandler(this.NextBtn_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(724, 82);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 49);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Меню";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // NPTheoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 646);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.NextBtn);
             this.Controls.Add(this.PrevBtn);
             this.Controls.Add(this.MainTxt);
@@ -209,5 +221,6 @@
         private System.Windows.Forms.TextBox MainTxt;
         private System.Windows.Forms.Button PrevBtn;
         private System.Windows.Forms.Button NextBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
